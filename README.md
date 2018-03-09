@@ -12,14 +12,14 @@ The website was created using the following languages: HTML, CSS and Javascript.
 ### API
 * Google Maps API
 * Google Places API
-* Eet.nu API
+* [**Eet.nu API**](https://docs.eet.nu)
 
 ### Compatible browsers
 * Google Chrome
 * Firefox
 
 ## How to see the restaurant map?
-* Click [**here**](https://acqfel.github.io/) and will open the project site.
+* Click [**here**](https://acqfel.github.io/restaurant-maps/) and will open the project site.
 * To run the app locally, click in the green button "Clone or download" above and the right side, then "Download ZIP". Unzip and open index.html in a browser.
 * 20 restaurants near NEMO Museum are displayed on the map. On the right side of the site the name of each of them are listed.
 
