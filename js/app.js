@@ -64,6 +64,7 @@ function createMarkersForPlaces(places) {
     // so that only one is open at once.
     var placeInfoWindow = new google.maps.InfoWindow();
 
+    /*jshint -W083 */
     // If a marker is clicked, do a place details search on it in the next function.
     marker.addListener('click', function() {
         // Animation Marker - jumps after it has been clicked
@@ -75,6 +76,7 @@ function createMarkersForPlaces(places) {
             getPlacesDetails(this, placeInfoWindow);
         }
     });
+    /*jshint +W083 */
 
     // Add each marker to array placeMarkers
     placeMarkers.push(marker);
@@ -135,7 +137,6 @@ function getPlacesDetails(marker, infowindow) {
 
 // Get place details from eet.nu API
 function eetDetails(lat,lng,placeName,innerHTML,map,marker,infowindow) {
-    var eet = "";
     var eetUrl = "https://api.eet.nu/venues?query="+placeName+"&max_distance=0.3&geolocation="+lat+","+lng;
     $.ajax({
         type: 'GET',
@@ -238,7 +239,7 @@ var ViewModel = function() {
         else {
             self.menuPosition(true);
         }
-    }
+    };
 
     // populate the observableArray placesList
     nemoPlaces.forEach(function(place) {
@@ -251,7 +252,7 @@ var ViewModel = function() {
         for (var i=0; i < self.placesList().length; i++){
             indexArray.push(false);
         }
-    }
+    };
     self.populateArray();
 
     // after a place list item is clicked,
@@ -261,14 +262,14 @@ var ViewModel = function() {
         var indexPlace = self.placesList.indexOf(item);
         console.log("i: "+indexPlace);
         openInfowindow(indexPlace);
-    }
+    };
 
     // Filters the list of places and
     // displays only those that match what was typed by the user
     this.search = function(data){
         var inputSearch = this.input();
 
-        if (this.input() == ""){
+        if (this.input() === ""){
             showAllMarkers();
             return true;
         }
@@ -284,7 +285,7 @@ var ViewModel = function() {
                 return false;
             }
         }
-    }
+    };
 
     // reset the indexArray
     this.resetIndexArray = function (){
@@ -292,7 +293,7 @@ var ViewModel = function() {
     	       return false;
         });
         hideAllMarkers();
-    }
+    };
 };
 
 function initKO(){
