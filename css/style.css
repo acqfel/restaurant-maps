@@ -1,0 +1,91 @@
+html,
+body {
+    font-family: Arial, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    min-height: 5%;
+    position: relative;
+    background-color: #000;
+    color: gold;
+}
+
+.menu-button {
+    margin: 10px 10px;
+    display: none;
+}
+
+.msg-button {
+    display: none;
+    color: gold;
+}
+
+.container {
+    height: 95%;
+    position: relative;
+}
+
+input {
+    font-size: 12px;
+}
+
+h1 {
+    color: gold;
+    font-size: 22px;
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
+#hide-listings,
+#show-listings {
+    width: 48%;
+}
+
+#map {
+    bottom: 0;
+    height: 100%;
+    left: 302px;
+    position: absolute;
+    right: 0;
+}
+
+.locations {
+    z-index: 3;
+    background-color: #000;
+    color: gold;
+    /* border: 1px solid #999; */
+    /* border-radius: 3px; */
+    height: 93%;
+    line-height: 35px;
+    padding: 10px 10px 30px 10px;
+    text-align: left;
+    width: 280px;
+}
+
+/* .locations .show-menu{
+    left: 0;
+} */
+
+.places-list {
+    overflow: scroll;
+    height: 80%;
+}
+
+@media screen and (max-width: 800px) {
+    #map{
+        left: 0;
+    }
+
+    .menu-button {
+        margin: 10px 10px;
+        display: inline;
+    }
+
+    .msg-button {
+        display: inline;
+        font-weight: bold;
+    }
+}
