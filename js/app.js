@@ -1,3 +1,4 @@
+'use strict';
 var map;
 var placeMarkers = [];
 // NEMO Science Museum location
@@ -157,8 +158,15 @@ function eetDetails(lat,lng,placeName,innerHTML,map,marker,infowindow) {
             // check if eet.nu place is the same place from Google Places API
             if (regexStart.test(placeName) || regexEnd.test(placeName)) {
                 // Add colected information from EET in innerHTML
-                innerHTML += "<div>Info provided by eet.nu</div>";
-                innerHTML += "<div>"+data.results[0].name+"</div>";
+                innerHTML += "<div>Info provided by ";
+                innerHTML += "<img width='36' height='15' src='css/logo-purple.svg' alt='eet-logo'></div>";
+
+                if(data.results[0].website_url){
+                    innerHTML += "<div>more details - eet.nu <a href="+data.results[0].url+" target='_blank'>";
+                    innerHTML += "link</a></div>";
+                }
+
+                innerHTML += "<div><strong>"+data.results[0].name+"</strong></div>";
 
                 if(data.results[0].telephone){
                     innerHTML += "<div>"+data.results[0].telephone+"</div>";
@@ -169,6 +177,8 @@ function eetDetails(lat,lng,placeName,innerHTML,map,marker,infowindow) {
                     innerHTML +=data.results[0].website_url+"</a></div>";
                 }
             }
+        } else {
+            innerHTML += "<div>eet.nu info <br>unavailable</div>";
         }
         infowindow.setContent(innerHTML);
         infowindow.open(map, marker);
@@ -177,8 +187,11 @@ function eetDetails(lat,lng,placeName,innerHTML,map,marker,infowindow) {
     .fail(function(jqXHR, textStatus) {
         console.log(jqXHR);
         console.log("text status: "+textStatus);
+        // message that eet.nu did not load
+        errorEet();
         // If the eet.nu API is not available then Infowindow
         // is only displayed with Google Places API information.
+        innerHTML += "<div>eet.nu info <br>unavailable</div>";
         infowindow.setContent(innerHTML);
         infowindow.open(map, marker);
     })
@@ -219,6 +232,17 @@ function hideAllMarkers(){
     }
 }
 
+// If an error occurs in the script that loads the Google Maps API,
+// the function is called and an alert message is displayed to the user.
+function errorMaps() {
+    alert("Google Maps API is currently unavailable, please try again later");
+}
+
+// Displays error message if the eet.nu API does not load.
+function errorEet() {
+    alert("eet.nu API doesn’t load");
+}
+
 // Knockout ViewModel code
 var ViewModel = function() {
     var self = this;
@@ -232,7 +256,6 @@ var ViewModel = function() {
 
     // Function to show / hide the menu
     this.changeMenu = function() {
-        console.log(self.menuPosition());
         if (self.menuPosition()) {
             self.menuPosition(false);
         }

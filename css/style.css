@@ -44,7 +44,7 @@ h1 {
     width: 48%;
 }
 
-#map {
+.map-google {
     bottom: 0;
     height: 100%;
     left: 302px;
@@ -65,10 +65,6 @@ h1 {
     width: 280px;
 }
 
-/* .locations .show-menu{
-    left: 0;
-} */
-
 .places-list {
     overflow: scroll;
     height: 80%;
@@ -87,5 +83,11 @@ h1 {
     .msg-button {
         display: inline;
         font-weight: bold;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .msg-button {
+        font-size: 12px;
     }
 }
