@@ -1,4 +1,3 @@
-'use strict';
 var map;
 var placeMarkers = [];
 // NEMO Science Museum location
